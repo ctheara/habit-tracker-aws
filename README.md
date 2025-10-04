@@ -39,13 +39,15 @@
 
 ## 📁 Project Structure
 
-├── docs/ # Documentation and notes
-├── infrastructure/ # CloudFormation templates
-│ ├── cloudformation/ # IaC templates
-│ └── diagrams/ # Architecture diagrams
-├── frontend/ # React application
-└── backend/ # Lambda functions
-└── lambda-functions/
+```bash
+├── docs/                   # Documentation and notes
+├── infrastructure/         # CloudFormation templates
+│   ├── cloudformation/     # IaC templates
+│   └── diagrams/           # Architecture diagrams
+├── frontend/               # React application
+└── backend/                # Backend
+└── lambda-functions/       # Lambda functions
+```
 
 ## 🔗 Links
 
