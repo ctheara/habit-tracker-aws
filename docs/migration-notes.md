@@ -48,11 +48,24 @@ aws cloudformation delete-stack --stack-name test-stack # delete stack
 
 ### What I Did Today
 
+- Created CloudFormation template (`01-s3-static-website.yaml`) for S3 static website hosting
+- Configured S3 bucket for static website hosting with index and error documents
+
 ### What I learned
 
-- S3 can host static websites, host a simple s3 static site
+- How to use CloudFormation to automate S3 static website setup
+- How to use parameters in CloudFormation for environment-specific resources
+- How to set up S3 bucket policies for public access via CloudFormation
+- How to use CloudFormation outputs to export resource info for other stacks
 
 ### Commands
+
+```bash
+aws cloudformation validate-template --template-body file://infrastructure/cloudformation/01-s3-static-website.yaml # valid template
+aws cloudformation create-stack --stack-name habit-tracker-frontend-dev --template-body file://infrastructure/cloudformation/01-s3-static-website.yaml --parameters ParameterKey=Environment,ParameterValue=dev # create stack
+aws cloudformation describe-stacks--stack-name habit-tracker-frontend-dev --query 'Stacks[0].StackStatus' # check status
+aws cloudformation describe-stacks --stack-name habit-tracker-frontend-dev --query 'Stacks[0].Outputs' # print output
+```
 
 ---
 

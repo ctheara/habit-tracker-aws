@@ -1,0 +1,70 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "S3 bucket for Habit Tracker frontend static website hosting"
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - prod
+    Description: Environment name (dev or prod)
+
+Resources:
+  # S3 Bucket for static website
+  FrontendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "habit-tracker-${Environment}-${AWS::AccountId}"
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      Tags:
+        - Key: Project
+          Value: HabitTrackerAWS
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  # Bucket Policy to allow public read access
+  FrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref FrontendBucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: "*"
+            Action: "s3:GetObject"
+            Resource: !Sub "${FrontendBucket.Arn}/*"
+
+Outputs:
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref FrontendBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-BucketName"
+
+  WebsiteURL:
+    Description: URL of the static website
+    Value: !GetAtt FrontendBucket.WebsiteURL
+    Export:
+      Name: !Sub "${AWS::StackName}-WebsiteURL"
+
+  BucketArn:
+    Description: ARN of the S3 bucket
+    Value: !GetAtt FrontendBucket.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-BucketArn"
+# Validate:
+# aws cloudformation validate-template --template-body file://infrastructure/cloudformation/01-s3-static-website.yaml
+# Create stack:
+# aws cloudformation create-stack --stack-name habit-tracker-frontend-dev --template-body file://infrastructure/cloudformation/01-s3-static-website.yaml --parameters ParameterKey=Environment,ParameterValue=dev
+
