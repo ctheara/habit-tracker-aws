@@ -50,6 +50,7 @@ aws cloudformation delete-stack --stack-name test-stack # delete stack
 
 - Created CloudFormation template (`01-s3-static-website.yaml`) for S3 static website hosting
 - Configured S3 bucket for static website hosting with index and error documents
+- Build frontend code and upload to s3 and got s3 static site to work
 
 ### What I learned
 
