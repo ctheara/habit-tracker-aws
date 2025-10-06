@@ -53,13 +53,15 @@ aws cloudformation delete-stack --stack-name test-stack
 
 ### What I Did Today
 
-- Created CloudFormation template (`01-s3-static-website.yaml`) for S3 static website hosting
-- Configured S3 bucket for static website hosting with index and error documents
-- Wrote first CloudFormation template
+- Wrote first simple CloudFormation template
 - Deployed S3 bucket via IaC
 - Built and deployed React app to S3
-- Tested static website hosting
-- Cost awareness today: S3 storage: ~$0.023/GB/month and GET requests: First 20,000 free per month, My React build: 4.1MB = $0.00009/month (within Free Tier)
+- Created CloudFormation template (`01-s3-static-website.yaml`) for S3 static website hosting
+- Configured S3 bucket for static website hosting with index and error documents
+- Added CloudFront distribution to CloudFormation template
+- Made S3 bucket private with OAI access
+- Enabled HTTPS with CloudFront default certificate
+- Tested complete frontend deployment
 
 ### What I learned
 
@@ -67,6 +69,9 @@ aws cloudformation delete-stack --stack-name test-stack
 - How to use parameters in CloudFormation for environment-specific resources
 - How to set up S3 bucket policies for public access via CloudFormation
 - How to use CloudFormation outputs to export resource info for other stacks
+- Cost awareness today:
+  - S3 storage: ~$0.023/GB/month and GET requests: First 20,000 free per month, My React build: 4.1MB = $0.00009/month (within Free Tier)
+  - CloudFront requests: First 10M free, data transfer: First 1TB free
 
 ### Commands
 
@@ -81,6 +86,25 @@ aws cloudformation describe-stacks--stack-name habit-tracker-frontend-dev --quer
 aws cloudformation describe-stacks --stack-name habit-tracker-frontend-dev --query 'Stacks[0].Outputs'
 # sync to S3
 aws s3 sync ./build/ s3://bucket-name/
+# update stack (add CloudFront)
+aws cloudformation update-stack \
+  --stack-name NAME \
+  --template-body file://template.yaml
+# invalidate cache
+aws cloudfront create-invalidation \
+  --distribution-id ID \
+  --paths "/*"
+```
+
+### Architecture Understanding
+
+```
+Before:
+User → S3 static website (HTTP only)
+Problems: No HTTPS, SPA routing broken
+After:
+User → CloudFront (HTTPS) → S3 (private)
+Benefits: HTTPS, SPA routing works, faster, secure
 ```
 
 ---

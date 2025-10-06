@@ -10,10 +10,9 @@
 - [x] S3 bucket for frontend created
 - [x] React build uploaded to S3
 - [x] S3 static hosting configured
-- [ ] CloudFront distribution created
-- [ ] HTTPS certificate obtained
+- [x] HTTPS certificate obtained
 - [ ] Custom domain configured (optional)
-- [ ] CloudFormation template for frontend written
+- [x] CloudFormation template for frontend written
 
 ## Week 2: Backend Migration (Coming Soon)
 

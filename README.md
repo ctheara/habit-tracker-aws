@@ -51,6 +51,7 @@
 
 ## 🔗 Links
 
+- **Production Frontend:** https://d1ew150qepzfd7.cloudfront.net/
 - **Original App Frontend:** https://habit-tracker-fawn-omega.vercel.app
 - **Original App Backend:** https://habit-tracker-nyif.onrender.com/
 - **Original API Docs:** https://habit-tracker-nyif.onrender.com/api-docs
@@ -78,7 +79,8 @@ This project is designed to stay within AWS Free Tier limits:
 - [x] Project structure created
 - [x] Documentation initialized
 - [x] Frontend deployed to S3
-- [ ] CloudFront distribution configured
+- [x] CloudFront distribution configured
+- [x] HTTPS enabled
 - [ ] Backend Lambda functions created
 - [ ] API Gateway configured
 - [ ] Database migration completed
