@@ -77,7 +77,7 @@ This project is designed to stay within AWS Free Tier limits:
 - [x] AWS CLI configuration
 - [x] Project structure created
 - [x] Documentation initialized
-- [ ] Frontend deployed to S3
+- [x] Frontend deployed to S3
 - [ ] CloudFront distribution configured
 - [ ] Backend Lambda functions created
 - [ ] API Gateway configured

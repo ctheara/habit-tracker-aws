@@ -7,9 +7,9 @@
 - [x] IAM admin user created
 - [x] IAM user MFA enabled
 - [x] AWS CLI installed and configured
-- [ ] S3 bucket for frontend created
-- [ ] React build uploaded to S3
-- [ ] S3 static hosting configured
+- [x] S3 bucket for frontend created
+- [x] React build uploaded to S3
+- [x] S3 static hosting configured
 - [ ] CloudFront distribution created
 - [ ] HTTPS certificate obtained
 - [ ] Custom domain configured (optional)
