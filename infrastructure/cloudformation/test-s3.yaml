@@ -14,3 +14,11 @@ Outputs:
   BucketName:
     Description: Name of the S3 bucket
     Value: !Ref MyFirstBucket
+# To deploy this template, use the AWS CLI command:
+# aws cloudformation create-stack --stack-name test-stack --template-body file://test-s3.yaml
+
+# To update the stack, use:
+# aws cloudformation describe-stacks --stack-name test-stack
+
+# To delete the stack, use:
+# aws cloudformation delete-stack --stack-name test-stack
