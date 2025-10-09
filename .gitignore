@@ -11,6 +11,7 @@ config
 .env
 .env.local
 .env.production
+**/.env*
 
 # IDE
 .vscode/
