@@ -48,7 +48,7 @@ aws s3 sync ./frontend/build/ s3://habit-tracker-dev-[ID]/
 - **Stack Name:** habit-tracker-frontend-dev
 - **Region:** us-east-1
 - **Bucket Name:** habit-tracker-dev-026008176803 (now PRIVATE)
-- **CloudFront URL:** https://[YOUR-DIST-ID].cloudfront.net
+- **CloudFront URL:** https://d1ew150qepzfd7.cloudfront.net/
 - **S3 URL:** ~~(deprecated - use CloudFront)~~
 
 ### What Changed

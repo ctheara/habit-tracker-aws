@@ -109,6 +109,20 @@ Benefits: HTTPS, SPA routing works, faster, secure
 
 ---
 
+## Day 3
+
+### What I Did Today
+
+### What I learned
+
+- AWS Lambda is serverless compute that runs code without managing servers
+- API Gateway routes HTTP requests to Lambda fucntions. Handles request validation, rate limiting, authentication, CORS
+- VPC is a private network in AWS used to isolate your resources from the public.
+
+### Commands
+
+---
+
 ## Day X
 
 ### What I Did Today
